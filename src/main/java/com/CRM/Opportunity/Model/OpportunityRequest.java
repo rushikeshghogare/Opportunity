@@ -1,7 +1,9 @@
 package com.CRM.Opportunity.Model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import com.CRM.Opportunity.Entity.Product;
@@ -43,8 +45,8 @@ public class OpportunityRequest implements Serializable {
     private int ownerID;
 
     private boolean opportunityStatus;
-    @JsonIgnore
-    private LocalDateTime opportunityCaptureDatetime;
+
+    private LocalDate opportunityCaptureDatetime;
     @JsonIgnore
     private LocalDateTime opportunityAssignedDatetime;
 
@@ -79,7 +81,7 @@ public class OpportunityRequest implements Serializable {
     private int quotationGivenBy;
 
     private String opportunityProductList;
-    @JsonIgnore
+
     private List<Product> product;
 
     private String productDescription;

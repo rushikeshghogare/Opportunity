@@ -33,7 +33,7 @@ public class OpportunityResponse<T> implements Serializable {
 
     @Setter
     @Getter
-    private Integer totalRecords;
+    private Long totalRecords;
     @Setter
     @Getter
     private List<T> responseListObject;

@@ -6,10 +6,12 @@ com\CRM\Opportunity\Service\OpportunityService.class
 com\CRM\Opportunity\Model\OpportunityResponse$OpportunityResponseBuilder.class
 com\CRM\Opportunity\Model\OpportunityRequest.class
 com\CRM\Opportunity\Repository\OpportunityRepository.class
+com\CRM\Opportunity\Adviser\OpportunityControllerAdviser.class
 com\CRM\Opportunity\Model\OpportunityRequest$OpportunityRequestBuilder.class
 com\CRM\Opportunity\Controller\OpportunityController.class
 com\CRM\Opportunity\Entity\PersonOrCompany.class
 com\CRM\Opportunity\Util\CommonConstants.class
 com\CRM\Opportunity\Entity\Product$ProductBuilder.class
+com\CRM\Opportunity\Config\SwaggerConfig.class
 com\CRM\Opportunity\Entity\Product.class
 com\CRM\Opportunity\Service\OpportunityServiceImpl.class

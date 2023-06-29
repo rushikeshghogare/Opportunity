@@ -1,17 +1,11 @@
 package com.CRM.Opportunity.Entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -22,6 +16,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
 @Table(name = "User_Opportunity")
@@ -29,9 +25,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@DynamicUpdate
 public class PersonOrCompany {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "sequence")
     private int id;
 
     @Column(name = "PersonOrCompany")
@@ -54,7 +52,7 @@ public class PersonOrCompany {
     @Column(name = "Salutation")
     private String salutation;
 
-    @NotEmpty
+
     @Column(name = "OpportunityDisplayName")
     private String opportunityDisplayName;
 
@@ -68,13 +66,12 @@ public class PersonOrCompany {
     @Column(name = "OwnerID")
     private int ownerID;
 
-
     @Column(name = "OpportunityStatus")
     private boolean opportunityStatus;
-    @JsonIgnore
+
     @Column(name = "OpportunityCaptureDatetime")
-    private LocalDateTime opportunityCaptureDatetime;
-    @JsonIgnore
+    private LocalDate opportunityCaptureDatetime;
+
     @Column(name = "OpportunityAssignedDatetime")
     private LocalDateTime opportunityAssignedDatetime;
 
@@ -91,14 +88,14 @@ public class PersonOrCompany {
     @NotNull
     @Column(name = "NextOpportunityActionAssignedTo")
     private int nextOpportunityActionAssignedTo;
-    @JsonIgnore
+
     @Column(name = "NextOpportunityActionDatetime")
     private LocalDateTime nextOpportunityActionDatetime;
 
     @NotEmpty
     @Column(name = "ActionExecutionStatus")
     private String actionExecutionStatus;
-    @JsonIgnore
+
     @Column(name = "ActionExecutionDatetime")
     private LocalDateTime actionExecutionDatetime;
 
@@ -136,9 +133,9 @@ public class PersonOrCompany {
     @Column(name = "OpportunityProductList")
     private String opportunityProductList;
 
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = Product.class)
+    @OneToMany(targetEntity = Product.class)
     @JoinColumn(name = "ProductId_FK", referencedColumnName = "id")
-
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<Product> product;
 
     @NotEmpty
